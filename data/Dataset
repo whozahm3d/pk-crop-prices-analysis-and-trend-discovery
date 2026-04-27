@@ -1,0 +1,22 @@
+# Dataset Information
+
+The dataset used in this project is not included in the repository.
+
+Details:
+- Source  : Kaggle — Crop Prices Dataset of Pakistan
+- Link    : https://www.kaggle.com/datasets/humairarana/crop-prices-dataset-of-pakistan
+- Type: [e.g., customer data, sales data, etc.]
+- Description: Brief overview of features and purpose
+Required schema per file:
+  - City    : Name of the city/market
+  - Date    : Date of the recorded price
+  - Crop    : Crop name
+  - Price   : Recorded price (PKR)
+
+All 53 CSV files must be placed in a single folder before running the notebook.
+The DATA_DIR variable in the Configuration cell (Cell 4) must be updated to
+point to that folder on your local machine.
+
+
+merged_crop_prices.csv
+cleaned_merged_crop_prices.csv
