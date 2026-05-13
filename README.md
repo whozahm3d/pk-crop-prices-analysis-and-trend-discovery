@@ -399,10 +399,8 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 > **Notable finding:** Linear Regression outperformed all ensemble and statistical models on average MAPE. This is consistent with the dataset's strong, persistent inflationary trend — a well-fitted linear model on time-based features captures most variance before seasonality and lag features handle residual structure.
 
 ---
----
 ### Per Crop-City Detailed Breakdown
 
-<details>
 <summary><b>🍌 Banana (DOZENS) — Vehari</b></summary>
 
 | Model | MAE | RMSE | MAPE (%) |
@@ -417,9 +415,7 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 | RF Tuned | 17.82 | 23.30 | 20.15 |
 | XGB Tuned | 16.74 | 22.48 | 19.01 |
 
-</details>
 
-<details>
 <summary><b>🧄 Garlic (China) — Rawalpindi</b></summary>
 
 | Model | MAE | RMSE | MAPE (%) |
@@ -434,9 +430,6 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 | RF Tuned | 3,332.46 | 4,166.82 | 14.69 |
 | XGB Tuned | 4,636.32 | 5,886.52 | 19.17 |
 
-</details>
-
-<details>
 <summary><b>🥦 Cauliflower — Faisalabad</b></summary>
 
 | Model | MAE | RMSE | MAPE (%) |
@@ -451,9 +444,7 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 | RF Tuned | 1,147.99 | 1,497.00 | 27.65 |
 | XGB Tuned | 1,093.57 | 1,467.64 | 25.81 |
 
-</details>
 
-<details>
 <summary><b>🌶️ Green Chilli — Vehari</b></summary>
 
 | Model | MAE | RMSE | MAPE (%) |
@@ -468,9 +459,6 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 | RF Tuned | 2,092.24 | 2,561.82 | 24.04 |
 | **XGB Tuned** | **1,888.07** | **2,550.05** | **22.48** |
 
-</details>
-
-<details>
 <summary><b>🥬 Cabbage — Rawalpindi</b></summary>
 
 | Model | MAE | RMSE | MAPE (%) |
@@ -484,8 +472,6 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 | XGBoost | 1,289.90 | 1,571.49 | 34.56 |
 | RF Tuned | 1,174.59 | 1,455.21 | 30.30 |
 | XGB Tuned | 1,189.61 | 1,444.41 | 36.60 |
-
-</details>
 
 ### Clustering Summary
 
