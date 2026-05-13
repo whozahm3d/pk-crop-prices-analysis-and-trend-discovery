@@ -1,0 +1,79 @@
+name: CI — Lint & Format Check
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint & Format (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      # -----------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # -----------------------------------------------------------------------
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      # -----------------------------------------------------------------------
+      - name: Install linting tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 black
+
+      # -----------------------------------------------------------------------
+      - name: Check formatting with black
+        run: |
+          black --check --diff . \
+            --exclude "/(\.git|\.venv|venv|__pycache__|notebooks)/"
+
+      # -----------------------------------------------------------------------
+      - name: Lint with flake8
+        run: |
+          flake8 . \
+            --max-line-length=100 \
+            --exclude=venv,.venv,__pycache__,notebooks \
+            --extend-ignore=E203,W503 \
+            --statistics \
+            --count
+
+      # -----------------------------------------------------------------------
+      - name: Confirm no notebook outputs committed
+        run: |
+          python - <<'EOF'
+          import json, sys, pathlib
+
+          notebooks = list(pathlib.Path("notebooks").glob("*.ipynb"))
+          failed = []
+
+          for nb_path in notebooks:
+              nb = json.loads(nb_path.read_text())
+              for i, cell in enumerate(nb["cells"]):
+                  if cell.get("cell_type") == "code":
+                      outputs = cell.get("outputs", [])
+                      execution_count = cell.get("execution_count")
+                      if outputs or execution_count is not None:
+                          failed.append(f"{nb_path} — cell {i} has committed outputs")
+
+          if failed:
+              print("ERROR: Notebooks with committed outputs detected:")
+              for f in failed:
+                  print(f"  {f}")
+              print()
+              print("Fix with:  make clean")
+              sys.exit(1)
+
+          print(f"OK: {len(notebooks)} notebook(s) checked — no committed outputs found.")
+          EOF
