@@ -497,8 +497,6 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 | Silhouette Score | — |
 | Anomaly Rate (Z-Score) | — |
 
-> 📝 Update from your Phase 3 clustering output files.
-
 ---
 
 ### Key Analytical Insights
@@ -507,6 +505,8 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 - **ARIMA underperforms significantly** (avg MAPE 39.06%) — likely because the high volatility and non-stationarity of perishable crop prices makes order selection brittle; ADF tests required first-differencing across all series
 - **Holt-Winters (28.10% avg MAPE)** is the strongest pure statistical model, outperforming ARIMA by ~11 percentage points on average
 - **Green Chilli (Vehari)** is the only series where tree-based models outperform Linear Regression — XGB Tuned achieves MAPE 22.48%, consistent with its higher volatility and non-linear spike behaviour
+- **Significant inflationary trend** observed post-2019, with price acceleration across high-volatility crops
+- **High-volatility cluster** identified: perishables (tomato, green chilli, onion) exhibit the lowest forecastability
 - **Seasonality at lag ≈ 12 months** confirmed via ACF/PACF across most crop-city pairs
 - **Global XGBoost** offers competitive RMSE at significantly reduced training time vs. per-crop local models — a practical advantage for production-scale deployment
 - **Winsorization** proved more effective than row-dropping for preserving temporal continuity in chronological forecasting splits
