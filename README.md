@@ -477,9 +477,9 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 
 | Metric | Value |
 |--------|-------|
-| Optimal K (K-Means) | — |
-| Silhouette Score | — |
-| Anomaly Rate (Z-Score) | — |
+| Optimal K (K-Means) | 2 |
+| Silhouette Score | 0.2977 |
+| Anomaly Rate (Z-Score) | (|z|>2.5) |
 
 ---
 
