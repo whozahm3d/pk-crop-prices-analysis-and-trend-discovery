@@ -487,8 +487,6 @@ Time-Series-Data-Analysis-and-Trend-Discovery-in-Pakistan-Crop-Prices/
 
 </details>
 
----
-
 ### Clustering Summary
 
 | Metric | Value |
