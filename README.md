@@ -77,7 +77,7 @@ Financial fraud causes trillions of dollars in annual losses globally. Detecting
 
 3. **RAG Policy Assistant** — A hybrid retrieval system (BM25 + dense vectors + CrossEncoder reranking) retrieves relevant SBP regulatory provisions and feeds them to GPT-4o-mini, generating grounded regulatory risk reports with zero hallucinations.
 
-> **Academic note:** This is a final-year university AI course project built on the PaySim synthetic dataset. Results are strong but not validated on real-world production transaction data.
+> **Academic note:** This is a 3rd-year university AI course project built on the PaySim synthetic dataset. Results are strong but not validated on real-world production transaction data. There will be in future that we use real-world production transaction data for further testing.
 
 ---
 
