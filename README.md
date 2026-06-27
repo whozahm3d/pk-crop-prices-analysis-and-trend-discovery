@@ -865,8 +865,8 @@ This project was **led and primarily executed by Ali Ahmad**, with team contribu
 | Name | Roll Number | GitHub / LinkedIn |
 |---|---|---|
 | **Ali Ahmad** *(Project Lead)* | 23L-2619 | [@whozahm3d](https://github.com/whozahm3d) · [LinkedIn](https://linkedin.com/in/whozahm3d) |
-| Taha Nawaz | 23L-2644 | — |
-| Shahzeb Imran | 23L-2506 | — |
+| Taha Nawaz | 23L-2644 | [LinkedIn](https://www.linkedin.com/in/taha-nawaz-0832882a9/) |
+| Shahzeb Imran | 23L-2506 | [LinkedIn](https://www.linkedin.com/in/shahzeb-malik-836761284/) |
 
 ---
 
