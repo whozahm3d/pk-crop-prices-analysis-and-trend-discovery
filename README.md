@@ -567,7 +567,7 @@ All features standardised with `StandardScaler` before clustering.
 
 ### K-Means Clustering
 
-![Elbow and Silhouette](results/figures/CLUSTERING/elbow_silhouette.png)
+![Elbow and Silhouette](results/figures/Clustering/elbow_silhouette.png)
 *Elbow method (inertia) and Silhouette Score for K = 2 to K = 8. Both criteria converge strongly on optimal K = 2.*
 
 **Two resulting clusters:**
@@ -577,26 +577,26 @@ All features standardised with `StandardScaler` before clustering.
 
 ### Hierarchical Agglomerative Clustering
 
-![Dendrogram](results/figures/CLUSTERING/dendrogram.png)
+![Dendrogram](results/figures/Clustering/dendrogram.png)
 *Ward linkage dendrogram. The cut at K = 2 produces groupings fully consistent with K-Means assignments, confirming structural robustness. Among the stable cluster, Cauliflower and Cabbage merge first — reflecting their shared brassica supply chains. Agreement between both clustering methods confirms the two-cluster solution is robust, not an artefact of the algorithm choice.*
 
 ### PCA Projection
 
-![PCA Scatter](results/figures/CLUSTERING/pca_scatter.png)
+![PCA Scatter](results/figures/Clustering/pca_scatter.png)
 *PCA 2D scatter coloured by K-Means cluster. PC1 explains **80.8%** and PC2 explains **11.1%** of variance — over 91% of total variance captured in two components, confirming the clustering feature space is inherently low-dimensional and the cluster separation is genuine.*
 
 ### Cluster Profiles
 
-![Cluster Profiles](results/figures/CLUSTERING/cluster_profiles.png)
+![Cluster Profiles](results/figures/Clustering/cluster_profiles.png)
 *Cluster profile heatmap. Cluster 0 (Strongly Seasonal) is characterised by high mean price, high CV, and steep OLS slope. Cluster 1 (Trending Down/Stable) has lower CV and shallower slope.*
 
-![Feature Comparison](results/figures/CLUSTERING/feature_comparison.png)
+![Feature Comparison](results/figures/Clustering/feature_comparison.png)
 *Feature-by-feature comparison across clusters. Separation is most pronounced on CV and spike frequency — confirming these as the primary discriminating features between the two market behaviour regimes.*
 
-![Cluster Time-Series](results/figures/CLUSTERING/cluster_timeseries.png)
+![Cluster Time-Series](results/figures/Clsutering/cluster_timeseries.png)
 *Monthly price time-series grouped by cluster. Cluster 0 (Garlic, Green Chilli) exhibits wide, irregular oscillations increasing in amplitude through 2018–2022. Cluster 1 (Banana, Cauliflower, Cabbage) shows smooth, gradually rising trends with well-defined seasonal oscillations repeating reliably year over year.*
 
-![Monthly Heatmap](results/figures/CLUSTERING/monthly_heatmap.png)
+![Monthly Heatmap](results/figures/Clsutering/monthly_heatmap.png)
 *Monthly average price heatmap per pair. Garlic peaks sharply in November–February consistent with post-harvest import cycles from China. Cauliflower and Cabbage show elevated prices in summer months (May–August) driven by reduced domestic supply. Green Chilli shows the most irregular seasonal pattern with spikes varying by month across years.*
 
 ### Anomaly Detection
@@ -609,18 +609,18 @@ Three complementary methods applied with no observations removed:
 | Rolling Deviation | \|yₜ − µ̃ₜ\| > 2σ̃ₜ (6-month window) | Adaptive to local price level shifts |
 | IQR | Outside [Q1 − 1.5·IQR, Q3 + 1.5·IQR] | Robust to non-normality and extreme outliers |
 
-![Anomaly Time Series](results/figures/CLUSTERING/anomaly_timeseries.png)
+![Anomaly Time Series](results/figures/Clsutering/anomaly_timeseries.png)
 *Anomaly flags overlaid on monthly price series for all five pairs. Red markers indicate detected anomalies. **Anomalies are concentrated in 2019–2022**, directly corresponding to COVID-19 pandemic supply disruptions and import price shocks.*
 
-![Anomaly Frequency](results/figures/CLUSTERING/anomaly_frequency.png)
+![Anomaly Frequency](results/figures/Clustering/anomaly_frequency.png)
 *Anomaly frequency by pair and detection method. All three methods agree on the ranking: Green Chilli and Cabbage show the highest anomaly rates (~2.3% and ~2.2%), followed by Cauliflower (1.1%). Banana and Garlic show 0% under IQR — their distributions are smooth enough that no observations fall outside standard IQR bounds.*
 
 ### Cross-Phase Integration
 
-![Integration](results/figures/CLUSTERING/integration.png)
+![Integration](results/figures/Clustering/integration.png)
 *Anomaly rate vs. best-model RMSE (left) and average RMSE per cluster type (right). A consistent, near-linear positive relationship between anomaly rate and RMSE confirms that **price anomalies are the primary driver of forecast error** — not model architecture limitations.*
 
-![Final Summary](results/figures/CLUSTERING/final_summary.png)
+![Final Summary](results/figures/Clustering/final_summary.png)
 *Final cross-phase summary: cluster membership, anomaly detection results, and best model RMSE per crop-city pair integrated into a single view.*
 
 **Critical operational insight:** Cluster 0 pairs show 40–80% higher RMSE than Cluster 1 pairs across all model types. To meaningfully improve forecasts, the priority should be integrating exogenous supply-side signals (weather, import volumes, fuel costs, exchange rates) — not architectural changes to the models.
@@ -633,10 +633,12 @@ Three complementary methods applied with no observations removed:
 pk-crop-prices-analysis-and-trend-discovery/
 │
 ├── notebooks/
+│   └── DM_Project_Deliverable1.ipynb    ← Single
 │   └── DM_Project_Final_Deliverable.ipynb    ← Single notebook — all three phases
 │
 ├── data/
 │   ├── raw/                                  ← Place 53 CSV files here (git-ignored)
+│   └── merged_crop_prices.csv                ← Merged + output (~500MB, git-ignored)
 │   └── cleaned_merged_crop_prices.csv        ← Merged + cleaned output (~400MB, git-ignored)
 │
 ├── src/                                      ← Modular helper scripts
@@ -706,7 +708,7 @@ pk-crop-prices-analysis-and-trend-discovery/
 │   │   │   ├── global_vs_local.png
 │   │   │   └── tuning_comparison.png
 │   │   │
-│   │   └── CLUSTERING/                       ← All clustering and anomaly plots
+│   │   └── Clustering/                       ← All clustering and anomaly plots
 │   │       ├── elbow_silhouette.png
 │   │       ├── dendrogram.png
 │   │       ├── pca_scatter.png
@@ -726,10 +728,13 @@ pk-crop-prices-analysis-and-trend-discovery/
 │       ├── hw_results.csv                    ← Holt-Winters seasonal type + metrics
 │       ├── rf_tuned_results.csv              ← Tuned RF best params + metrics
 │       ├── xgb_tuned_results.csv             ← Tuned XGBoost best params + metrics
-│       └── model_comparison.csv             ← Consolidated all-model comparison table
+│       └── model_comparison.csv             `← Consolidated all-model comparison table
 │
 ├── reports/
-│   └── DM_Final_Report.pdf                  ← Full academic report (LaTeX)
+│   ├── DM_Final_Report.pdf                  ← Full academic report (LaTeX)
+│   ├── DM_mid_semester_progress_report.pdf  ← Mid Semester project report (Latex)
+│   └── Data Mining Project Proposal.pdf     ← Project proposal 
+     
 │
 ├── requirements.txt                          ← Python dependencies
 ├── .gitignore
