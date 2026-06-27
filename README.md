@@ -310,7 +310,7 @@ All features use `shift(1)` — only values known at time *t−1* or earlier are
 | `month_cos` | cos(2π · month/12) | Cyclical month encoding |
 | `time_idx` | Integer month index from series start | Long-run inflationary trend proxy |
 
-![Feature Snapshot](results/figures/Features/feature_snapshot.png)
+![Feature Snapshot](results/figures/feature_snapshot.png)
 *`lag_1` tracks actual price with near-perfect alignment across all five series — confirming strong first-order autocorrelation as the primary price mechanism in every crop-city pair.*
 
 ### Data Splitting (Strictly Chronological)
@@ -514,27 +514,27 @@ The ML cluster (ranks 1–6, RMSE 1,778–2,375) clearly outperforms the statist
 
 ### Model Diagnostics
 
-![Actual vs Predicted All Pairs](results/figures/Visualizations/actual_vs_predicted.png)
+![Actual vs Predicted All Pairs](results/figures/actual_vs_predicted.png)
 *Best-model actual vs. predicted across all five pairs on the test set. Banana and Cabbage are tracked tightly. Garlic and Green Chilli show wider error bands concentrated around price spike events.*
 
-![RMSE Heatmap](results/figures/Evaluation/rmse_heatmap.png)
+![RMSE Heatmap](results/figures/rmse_heatmap.png)
 *RMSE heatmap across all 9 models × 5 crop-city pairs. Darker = higher error. ARIMA and Naive occupy the darkest cells; RF Tuned and XGB Tuned the lightest. The entire Garlic (China) row is darker than all others regardless of model choice.*
 
-![Residual Analysis](results/figures/Evaluation/residuals.png)
+![Residual Analysis](results/figures/residuals.png)
 *Residual time-series and histograms for XGBoost Tuned. Banana and Cabbage residuals centre near zero with no systematic trend. Garlic and Green Chilli show large positive spikes from unpredicted supply-shock events.*
 
-![Error Distributions](results/figures/Visualizations/error_distributions.png)
+![Error Distributions](results/figures/error_distributions.png)
 *KDE and box plots across all models per pair. Narrower, more symmetric distributions indicate better-calibrated models. Tuned ML models consistently produce tighter error distributions than ARIMA or Naive baselines.*
 
-![Temporal Error](results/figures/Evaluation/temporal_error.png)
+![Temporal Error](results/figures/temporal_error.png)
 *Error breakdown by season (Winter / Spring / Summer / Autumn) for XGBoost Tuned. Summer errors (June–August) are systematically elevated across all five crops — directly confirming the May–August harvest transition window as the hardest forecasting period.*
 
 ### Feature Importance
 
-![Feature Importance](results/figures/Importance/feature_importance.png)
+![Feature Importance](results/figures/feature_importance.png)
 *Mean feature importance from RF Tuned (left) and XGBoost Tuned (right), averaged across all five pairs. `lag_1` is dominant in both models with scores consistently above 0.3.*
 
-![Feature Importance Heatmap](results/figures/Importance/importance_heatmap.png)
+![Feature Importance Heatmap](results/figures/importance_heatmap.png)
 *Per crop-city pair importance heatmap (XGBoost Tuned). `lag_1` dominates universally. `month_sin`/`month_cos` carry higher importance for Banana and Cauliflower. `time_idx` dominates for Garlic (China), reflecting its inflationary trend as the primary price driver.*
 
 ### Multi-Horizon Forecasting
